@@ -20,11 +20,16 @@ Next you can run the handy export script to convert the model to CoreML:
 ```python
 python3 export.py --points '[[500,375]]' --labels '[1]' --variant Small --precision FLOAT16
 ```
+
+For video segmentation you can export the additional components with the dedicated script:
+```python
+python3 export_video.py --points '[[500,375]]' --labels '[1]' --variant Small --precision FLOAT16
+```
 For an integrated experience, you can also use [SAM2 Studio](https://github.com/huggingface/sam2-studio), a native MacOS app that allows you to quickly segment images. 
 
 ![UI Screenshot](https://github.com/huggingface/sam2-studio/blob/main/screenshot.png?raw=true)
 
-> Note ⚠️: The CoreML conversion currently only supports image segmentation tasks. Video segmentation support is in development.
+> Note ⚠️: Video conversion exports the memory encoder and attention modules in addition to the image components so the resulting CoreML packages can drive streaming inference on device.
 ---
 
 # SAM 2: Segment Anything in Images and Videos
